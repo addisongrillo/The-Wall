@@ -1,15 +1,18 @@
 import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom'
+import BaseRouter from './routes'
 import 'antd/dist/antd.css'
 
 import SiderLayout from './containers/Layout'
-import PostList from './containers/PostListView'
 
 function App() {
   return (
     <div>
+      <Router>
       <SiderLayout>
-          <PostList/>
+          <BaseRouter/>
         </SiderLayout>
+      </Router>
     </div>
   );
 }

@@ -2,21 +2,6 @@ import React from 'react'
 import Posts from "../components/Posts"
 import axios from 'axios'
 
-const data = [
-    {
-      title: 'Ant Design Title 1',
-    },
-    {
-      title: 'Ant Design Title 2',
-    },
-    {
-      title: 'Ant Design Title 3',
-    },
-    {
-      title: 'Ant Design Title 4',
-    },
-  ];
-
 class PostList extends React.Component {
     state = {
         posts: []

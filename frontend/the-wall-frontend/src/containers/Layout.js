@@ -22,11 +22,11 @@ class SiderLayout extends React.Component {
           <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
             <Menu.Item key="1">
               <Icon type="pie-chart" />
-              <span>Option 1</span>
+              <span>Wall</span>
             </Menu.Item>
             <Menu.Item key="2">
               <Icon type="desktop" />
-              <span>Option 2</span>
+              <span>Login</span>
             </Menu.Item>
             {/* <SubMenu
               key="sub1"
@@ -63,8 +63,8 @@ class SiderLayout extends React.Component {
           <Header style={{ background: '#fff', padding: 0 }} />
           <Content style={{ margin: '0 16px' }}>
             <Breadcrumb style={{ margin: '16px 0' }}>
-              <Breadcrumb.Item>User</Breadcrumb.Item>
-              <Breadcrumb.Item>cat</Breadcrumb.Item>
+              {/* <Breadcrumb.Item>User</Breadcrumb.Item>
+              <Breadcrumb.Item>cat</Breadcrumb.Item> */}
             </Breadcrumb>
             <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
                 {this.props.children}
