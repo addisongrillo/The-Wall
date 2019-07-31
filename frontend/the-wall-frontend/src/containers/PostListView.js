@@ -7,7 +7,7 @@ class PostList extends React.Component {
         posts: []
     }
     componentDidMount(){
-        axios.get('http://localhost:8000/api/')
+        axios.get('http://localhost:8000/posts/')
         .then(res=> {
             this.setState({
                 posts: res.data

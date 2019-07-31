@@ -1,29 +1,29 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from TheWall.models import Post, Person
+from TheWall.models import Post
 
 
 class PostSerializer(serializers.ModelSerializer):
-    person = serializers.SlugRelatedField(
+    user = serializers.SlugRelatedField(
         many=False,
-        read_only=True,
+        queryset=User.objects.all(),
         slug_field='username'
- )
+ )  
     def update(self, instance, validated_data):
         instance.content = validated_data.get('content', instance.content)
-        instance.person = validated_data.get('person', instance.person)
+        instance.user = validated_data.get('user', instance.user)
         return instance
 
     class Meta:
         model = Post
-        fields = ('id', 'content', 'person')
+        fields = ('url', 'id', 'content', 'user', 'user_id')
 
 
-class PersonSerializer(serializers.ModelSerializer):
-    person_posts = PostSerializer(many=True, required=False, allow_null=True)
+class UserSerializer(serializers.ModelSerializer):
+    user_posts = PostSerializer(many=True, required=False, allow_null=True)
     
 
     class Meta:
-        model = Person
-        fields = ('username', 'email', 'first_name',
-                  'last_name', 'password', 'person_posts')
+        model = User
+        fields = ('url', 'username', 'email', 'first_name',
+                  'last_name', 'password', 'user_posts')
