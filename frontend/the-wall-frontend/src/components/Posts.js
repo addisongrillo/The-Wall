@@ -12,11 +12,11 @@ const Posts = (props) => {
         itemLayout="horizontal"
         dataSource={props.data}
         renderItem={item => (
-          <ListItem item={item}/>
+          <ListItem update={props.update.bind(this)} item={item}/>
         )
         }
         />
-        <NewPostForm/>
+        <NewPostForm update={props.update.bind(this)}/>
       </>
     )
     

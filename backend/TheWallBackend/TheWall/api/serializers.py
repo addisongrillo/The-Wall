@@ -9,10 +9,10 @@ class PostSerializer(serializers.ModelSerializer):
         queryset=User.objects.all(),
         slug_field='username'
  )  
-    def update(self, instance, validated_data):
-        instance.content = validated_data.get('content', instance.content)
-        instance.user = validated_data.get('user', instance.user)
-        return instance
+    # def update(self, instance, validated_data):
+    #     instance.content = validated_data.get('content', instance.content)
+    #     instance.user = validated_data.get('user', instance.user)
+    #     return instance
 
     class Meta:
         model = Post

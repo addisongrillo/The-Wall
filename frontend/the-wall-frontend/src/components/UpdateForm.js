@@ -2,44 +2,40 @@ import React from 'react'
 import { Form, Input, Button } from 'antd';
 import axios from 'axios'
 
-// function hasErrors(fieldsError) {
-//   return Object.keys(fieldsError).some(field => fieldsError[field]);
-// }
-
-class NewPostForm extends React.Component {
+class UpdatePostForm extends React.Component {
   componentDidMount() {
-    // To disabled submit button at the beginning.
     this.props.form.validateFields();
   }
 
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
-      axios.post('http://localhost:8000/posts/', {
+      axios.put(`${this.props.url}`, {
             content: values.content,
             user: "addison"
             })
+            console.log(values.content)
     })
+    console.log(this.props.url)
     this.props.update()
-    // window.location.reload()
-    this.props.form.resetFields()
+    this.props.toggleForm()
   };
 
   render() {
     const { getFieldDecorator } = this.props.form;
     return (
-      <Form onSubmit={this.handleSubmit}>
+      <Form layout="inline" onSubmit={this.handleSubmit}>
           <Form.Item>
           {getFieldDecorator('content', {
           })(
             <Input size="large" style={{ width: 500 }}
-              placeholder="Post something on the wall!"
+              placeholder="Update Your Post"
             />,
           )}
         </Form.Item>
         <Form.Item>
           <Button type="primary" htmlType="submit">
-            Post
+            Update
           </Button>
         </Form.Item>
       </Form>
@@ -47,6 +43,6 @@ class NewPostForm extends React.Component {
   }
 }
 
-const WrappedNewPostForm = Form.create({ name: 'horizontal_login' })(NewPostForm);
+const WrappedUpdatePostForm = Form.create({ name: 'horizontal_login' })(UpdatePostForm);
 
-export default WrappedNewPostForm
+export default WrappedUpdatePostForm
