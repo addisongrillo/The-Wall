@@ -7,6 +7,7 @@ const ListItem = (props) => {
 
     const handleDelete = () => {
         axios.delete(`${props.item.url}`)
+        window.location.reload()
       }
 
     return(
@@ -16,7 +17,7 @@ const ListItem = (props) => {
               title={<a href="https://ant.design">{props.item.user}</a>}
               description={props.item.content}
             />
-            <Button onClick={handleDelete}>Delete Post</Button>
+            <Button type="danger" onClick={handleDelete}>Delete Post</Button>
           </List.Item>
     )
 }
