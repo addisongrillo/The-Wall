@@ -27,16 +27,3 @@ class UserView(viewsets.ModelViewSet):
 class PostView(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
-
-
-    # def get_queryset(self, *args, **kwargs):
-    #     queryset_list = Post.objects.all()
-    #     query = self.request.GET.get("q")
-    #     if query:
-    #         queryset_list = queryset_list.filter(
-    #             Q(name__icontains=query) |
-    #             Q(user__first_name__icontains=query) |
-    #             Q(user__last_name__icontains=query) |
-    #             Q(user__username__icontains=query)
-    #         ).distinct()
-    #     return queryset_list
