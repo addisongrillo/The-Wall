@@ -7,7 +7,7 @@ class PostList extends React.Component {
         posts: []
     }
     update = () => {
-        setTimeout(this.updateAfterTimeout, 200)
+        setTimeout(this.updateAfterTimeout, 100)
     }
 
     updateAfterTimeout = () =>{

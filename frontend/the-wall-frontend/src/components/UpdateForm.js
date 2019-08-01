@@ -1,6 +1,7 @@
 import React from 'react'
 import { Form, Input, Button } from 'antd';
 import axios from 'axios'
+import { connect } from 'react-redux'
 
 class UpdatePostForm extends React.Component {
   componentDidMount() {
@@ -10,10 +11,16 @@ class UpdatePostForm extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
-      axios.put(`${this.props.url}`, {
-            content: values.content,
-            user: "addison"
-            })
+      let config = {
+        headers: {
+          'Authorization': `Token ${this.props.token}`
+        }
+      }
+      let data = {
+        content: values.content,
+        user: this.props.username
+      }
+      axios.put(`${this.props.url}`, data, config)
             console.log(values.content)
     })
     console.log(this.props.url)
@@ -45,4 +52,12 @@ class UpdatePostForm extends React.Component {
 
 const WrappedUpdatePostForm = Form.create({ name: 'horizontal_login' })(UpdatePostForm);
 
-export default WrappedUpdatePostForm
+const mapStateToProps = state => {
+  return{
+    token: state.token,
+    username: state.username
+  }
+}
+
+
+export default connect(mapStateToProps, null)(WrappedUpdatePostForm)

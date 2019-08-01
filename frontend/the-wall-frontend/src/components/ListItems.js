@@ -16,7 +16,12 @@ const ListItem = (props) => {
         } 
 
     const handleDelete = () => {
-        axios.delete(`${props.item.url}`)
+        let config = {
+          headers: {
+            'Authorization': `Token ${props.token}`
+          }
+        }
+        axios.delete(`${props.item.url}`, config)
         props.update()
       }
 
@@ -30,11 +35,11 @@ const ListItem = (props) => {
                 title={<a href="https://ant.design">{props.item.user}</a>}
                 description={props.item.content}
                 />
-                {props.isAuthenticated &&
+                {props.username === props.item.user &&
                   <Button type="danger" onClick={handleDelete}>Delete Post</Button>
                 }
                   <div style={{width: '10px'}}></div>
-                  {props.isAuthenticated &&
+                  {props.username === props.item.user &&
                   <Button type="primary" onClick={toggleForm}>Update Post</Button>
                 }
             </>
@@ -49,7 +54,9 @@ const ListItem = (props) => {
 
 const mapStateToProps = state => {
   return{
-    isAuthenticated: state.token !== null
+    isAuthenticated: state.token !== null,
+    token: state.token,
+    username: state.username
   }
 }
 
