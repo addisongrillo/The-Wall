@@ -2,6 +2,9 @@ import React from 'react'
 import { List, Avatar, Button } from 'antd';
 import axios from 'axios'
 import WrappedUpdatePostForm from './UpdateForm';
+import { connect } from 'react-redux'
+import * as actions from '../store/actions/auth'
+
 
 
 const ListItem = (props) => {
@@ -27,9 +30,13 @@ const ListItem = (props) => {
                 title={<a href="https://ant.design">{props.item.user}</a>}
                 description={props.item.content}
                 />
-                <Button type="danger" onClick={handleDelete}>Delete Post</Button>
-                <div style={{width: '10px'}}></div>
-                <Button type="primary" onClick={toggleForm}>Update Post</Button>
+                {props.isAuthenticated &&
+                  <Button type="danger" onClick={handleDelete}>Delete Post</Button>
+                }
+                  <div style={{width: '10px'}}></div>
+                  {props.isAuthenticated &&
+                  <Button type="primary" onClick={toggleForm}>Update Post</Button>
+                }
             </>
             }
             
@@ -40,4 +47,16 @@ const ListItem = (props) => {
     )
 }
 
-export default ListItem
+const mapStateToProps = state => {
+  return{
+    isAuthenticated: state.token !== null
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onTryAutoSignup: () => dispatch(actions.authCheckState())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ListItem)
