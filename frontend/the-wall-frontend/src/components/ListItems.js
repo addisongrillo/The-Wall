@@ -28,7 +28,7 @@ const ListItem = (props) => {
                 description={props.item.content}
                 />
                 <Button type="danger" onClick={handleDelete}>Delete Post</Button>
-                <div id="buttonspace"></div>
+                <div style={{width: '10px'}}></div>
                 <Button type="primary" onClick={toggleForm}>Update Post</Button>
             </>
             }

@@ -2,13 +2,8 @@ import React from 'react'
 import { Form, Input, Button } from 'antd';
 import axios from 'axios'
 
-// function hasErrors(fieldsError) {
-//   return Object.keys(fieldsError).some(field => fieldsError[field]);
-// }
-
 class NewPostForm extends React.Component {
   componentDidMount() {
-    // To disabled submit button at the beginning.
     this.props.form.validateFields();
   }
 
@@ -21,7 +16,6 @@ class NewPostForm extends React.Component {
             })
     })
     this.props.update()
-    // window.location.reload()
     this.props.form.resetFields()
   };
 
