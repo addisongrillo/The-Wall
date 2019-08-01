@@ -3,13 +3,12 @@ from rest_framework import viewsets
 from django.contrib.auth.models import User
 from TheWall.models import Post
 from .serializers import PostSerializer, UserSerializer
-from django.db.models import Q
-from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticated
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
+from django.core.mail import send_mail
+from django.http import JsonResponse
 
 
 class CustomObtainAuthToken(ObtainAuthToken):
@@ -27,3 +26,15 @@ class UserView(viewsets.ModelViewSet):
 class PostView(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
+
+def email(request):
+    params = request.GET
+    email = params.__getitem__('email')
+    send_mail('Welcome To The Wall!', 
+    'Thank you for joining The Wall.', 
+    "thewallapp2019@gmail.com", 
+    ['%s'%(email)], 
+    fail_silently = False)
+    return JsonResponse({'email':'sent'})
+
+    

@@ -64,6 +64,7 @@ export const authLogin = (username, password) => {
 export const authSignup = (username, email, password1, password2) => {
     return dispatch => {
         dispatch(authStart());
+        axios.get(`http://localhost:8000/email/?email=${email}`)
         axios.post(`http://localhost:8000/rest-auth/registration/`, {
             username: username, 
             email: email,
@@ -72,10 +73,8 @@ export const authSignup = (username, email, password1, password2) => {
         })
         .then(res => {
             const token = res.data.key;
-            const username = res.data.username
             const expirationDate = new Date(new Date().getTime() + 3600 * 1000); // 1 hour
             localStorage.setItem('token', token);
-            localStorage.setItem('username', username);
             localStorage.setItem('expirationDate', expirationDate);
             dispatch(authSuccess(token));
             dispatch(checkAuthTimeout(3600));
