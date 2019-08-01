@@ -1,19 +1,27 @@
 import React from 'react'
 import { Form, Input, Button } from 'antd';
 import axios from 'axios'
+import { connect } from 'react-redux'
+
 
 class NewPostForm extends React.Component {
   componentDidMount() {
     this.props.form.validateFields();
   }
-
+  
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
-      axios.post('http://localhost:8000/posts/', {
+      let config = {
+        headers: {
+          'Authorization': `Token ${this.props.token}`
+        }
+      }
+      let data = {
             content: values.content,
-            user: "addison"
-            })
+            user: this.props.username
+      }
+      axios.post('http://localhost:8000/posts/', data, config)
     })
     this.props.update()
     this.props.form.resetFields()
@@ -43,4 +51,12 @@ class NewPostForm extends React.Component {
 
 const WrappedNewPostForm = Form.create({ name: 'horizontal_login' })(NewPostForm);
 
-export default WrappedNewPostForm
+const mapStateToProps = state => {
+  return{
+    token: state.token,
+    username: state.username
+  }
+}
+
+
+export default connect(mapStateToProps, null)(WrappedNewPostForm)
