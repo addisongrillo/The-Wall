@@ -41,7 +41,7 @@ export const logout = () => {
 export const authLogin = (username, password) => {
     return dispatch => {
         dispatch(authStart());
-        axios.post(`https://thewall2019.herokuapp.com/authenticate/`, { 
+        axios.post(`https://thewall2019.herokuapp.com/api/authenticate/`, { 
             username: username, 
             password: password 
         })
