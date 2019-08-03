@@ -25,7 +25,7 @@ SECRET_KEY = '@_a2x2r!%_y(ab6gakfjy+d@p408cyd=_9y!#y0nlfsm4%9e9!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['thewall2019.herokuapp.com/']
+ALLOWED_HOSTS = ['thewall2019.herokuapp.com']
 
 
 # Application definition
