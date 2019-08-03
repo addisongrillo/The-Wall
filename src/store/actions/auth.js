@@ -64,7 +64,7 @@ export const authLogin = (username, password) => {
 export const authSignup = (username, email, password1, password2) => {
     return dispatch => {
         dispatch(authStart());
-        axios.get(`https://thewall2019.herokuapp.com/email/?email=${email}`)
+        axios.get(`https://thewall2019.herokuapp.com/api/email/?email=${email}`)
         axios.post(`https://thewall2019.herokuapp.com/rest-auth/registration/`, {
             username: username, 
             email: email,
