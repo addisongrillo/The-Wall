@@ -14,5 +14,4 @@ urlpatterns = [
     path('', include(router.urls)),
     path('authenticate/', CustomObtainAuthToken.as_view()),
     path('email/', views.email),
-    # url(r'^email/(?P<email>\d+)/$', views.email)
 ]
