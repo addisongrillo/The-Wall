@@ -11,7 +11,7 @@ class PostList extends React.Component {
     }
 
     updateAfterTimeout = () =>{
-        axios.get('https://thewall2019.herokuapp.com/posts/')
+        axios.get('https://thewall2019.herokuapp.com/api/posts/')
         .then(res=> {
             this.setState({
                 posts: res.data
@@ -21,7 +21,7 @@ class PostList extends React.Component {
     }
 
     componentDidMount(){
-        axios.get('https://thewall2019.herokuapp.com/posts/')
+        axios.get('https://thewall2019.herokuapp.com/api/posts/')
         .then(res=> {
             this.setState({
                 posts: res.data

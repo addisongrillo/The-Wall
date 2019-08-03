@@ -21,7 +21,7 @@ class NewPostForm extends React.Component {
             content: values.content,
             user: this.props.username
       }
-      axios.post('https://thewall2019.herokuapp.com/posts/', data, config)
+      axios.post('https://thewall2019.herokuapp.com/api/posts/', data, config)
     })
     this.props.update()
     this.props.form.resetFields()
