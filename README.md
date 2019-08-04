@@ -10,7 +10,7 @@ You can also Update or Delete your own posts.
 
 ## Launching instructions
 
-## Front End
+## Front End    
 ### From root:
 cd frontend/the-wall-frontend 
 
@@ -31,6 +31,6 @@ pip install -r requirements.txt
 
 cd TheWallBackend
 
-python manage.py runserver will launch on localhost:8000
+python manage.py runserver
 
 back end will launch on localhost:8000
