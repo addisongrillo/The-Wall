@@ -7,9 +7,6 @@ import * as actions from '../store/actions/auth'
 
 class Posts extends React.Component {
   render(){
-
-  console.log(this.props.isAuthenticated)
-
     return(
       <>
         <List

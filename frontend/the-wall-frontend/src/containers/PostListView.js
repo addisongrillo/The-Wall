@@ -16,7 +16,6 @@ class PostList extends React.Component {
             this.setState({
                 posts: res.data
             })
-            console.log(this.state.posts)
         })
     }
 
@@ -26,7 +25,6 @@ class PostList extends React.Component {
             this.setState({
                 posts: res.data
             })
-            console.log(this.state.posts)
         })
     }
     render(){

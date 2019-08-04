@@ -21,9 +21,7 @@ class UpdatePostForm extends React.Component {
         user: this.props.username
       }
       axios.put(`${this.props.url}`, data, config)
-            console.log(values.content)
     })
-    console.log(this.props.url)
     this.props.update()
     this.props.toggleForm()
   };
