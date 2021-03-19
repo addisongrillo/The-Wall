@@ -7,7 +7,7 @@ django-cors-headers==3.0.2
 django-mail-templated==2.6.5
 django-rest-auth==0.9.5
 django-welcome==0.3.0
-djangorestframework==3.10.2
+djangorestframework==3.11.2
 idna==2.8
 oauthlib==3.0.2
 python3-openid==3.1.0
